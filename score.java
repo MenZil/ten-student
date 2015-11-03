@@ -1,32 +1,52 @@
-package test1;
-
+import java.io.InputStream;
+import java.util.Scanner;
 
 public class score {
-	/**
-	 * @param args
-	 */
-	double arr[] = { 3, 5.4, 45.5, 12, 0, 45, 67, 108.3 };
-
-	public void px() {
-		for (int i = 0; i < arr.length - 1; i++) {
-			for (int j = 0; j < arr.length - i - 1; j++) {
-				if (arr[j] > arr[j + 1]) {
-					double temp = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = temp;
+	public static void main(String[] args) {
+		String name[]=new String[10];
+		int score[] = new int[10];
+		
+		
+		for (int i = 0; i < name.length; i++) {
+			System.out.println("please input student "+(i+1)+" name:");
+			Scanner scan = new Scanner(System.in);
+			name[i] = scan.next();
+			System.out.println("please input student "+(i+1)+" score:");
+			score[i]= scan.nextInt();
+		}
+		System.out.println("--------------------");
+		System.out.println("源数据为：");
+		for (int i = 0; i < name.length; i++) {
+			System.out.print(name[i]+":");
+			System.out.println(score[i]);
+		}
+		System.out.println("--------------------");
+		System.out.println("按成绩排序后：");
+		int stemp;
+		String ntemp;
+		for (int i = 0; i < score.length - 1; i++) {
+			for (int j = 0; j < score.length -i - 1; j++) {
+				if (score[j] < score[j + 1]) {
+					stemp = score[j];
+					ntemp = name[j];
+					
+					score[j] = score[j + 1];
+					name[j] = name[j+1];
+					
+					score[j + 1] = stemp;
+					name[j+1] = ntemp;
 				}
 			}
-			System.out.println("��" + (i + 1) + "��ð�ݣ�");
-			for (int k = 0; k < arr.length; k++) {
-				System.out.print(arr[k] + "    ");
-			}
-			System.out.println();
 		}
+		
+		for (int k = 0; k < score.length; k++) {
+			System.out.print(name[k]+":");
+			System.out.println(score[k]);
+		}
+		
+		
+		
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		score px = new score();
-		px.px();
-	}
+	
 }
